@@ -3,14 +3,29 @@ const eventHub = document.querySelector("#state-fair")
 
 eventHub.addEventListener("click", clickEvent => {
 
+    let ticketPuchasedEvent
+
+    console.log("click event")
+    console.log(clickEvent.target.id)
+
     if(clickEvent.target.id === "rideTicket") {
-        const rideEvent = new CustomEvent("rideTicketPurchased", {
+        ticketPuchasedEvent = new CustomEvent("rideTicketPurchased", {
             detail: {
                 ticketType: "ride"
             }
         })
+    }
 
-        eventHub.dispatchEvent(rideEvent)
+    if(clickEvent.target.id === "foodTicket") {
+        ticketPuchasedEvent = new CustomEvent("foodTicketPurchased", {
+            detail: {
+                ticketType: "food"
+            }
+        })
+    }
+
+    if(ticketPuchasedEvent){
+        eventHub.dispatchEvent(ticketPuchasedEvent)
     }
 })
 
@@ -19,6 +34,9 @@ export const TicketBooth = () => {
     contentTarget.innerHTML = `
         <div class="ticketBooth">
             <button id="rideTicket">Ride Ticket</button>
+        </div>
+        <div class="ticketBooth">
+            <button id="foodTicket">Food Ticket</button>
         </div>
     `
 }
