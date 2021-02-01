@@ -1,7 +1,7 @@
 let contentTarget = document.querySelector(".rides")
 const eventHub = document.querySelector("#state-fair")
 
-export const RideTicketHolders = () => {
+export const RideTicketHolder = () => {
     eventHub.addEventListener("rideTicketPurchased", customEvent => {
         if(customEvent.detail.ticketType === "ride") {
             contentTarget.innerHTML += `
@@ -10,4 +10,3 @@ export const RideTicketHolders = () => {
         }
     })
 }
-
