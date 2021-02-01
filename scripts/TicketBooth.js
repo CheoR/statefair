@@ -5,9 +5,6 @@ eventHub.addEventListener("click", clickEvent => {
 
     let ticketPuchasedEvent
 
-    console.log("click event")
-    console.log(clickEvent.target.id)
-
     if(clickEvent.target.id === "rideTicket") {
         ticketPuchasedEvent = new CustomEvent("rideTicketPurchased", {
             detail: {
@@ -24,6 +21,14 @@ eventHub.addEventListener("click", clickEvent => {
         })
     }
 
+    if(clickEvent.target.id === "gameTicket") {
+        ticketPuchasedEvent = new CustomEvent("gameTicketPurchased", {
+            detail: {
+                ticketType: "game"
+            }
+        })
+    }
+
     if(ticketPuchasedEvent){
         eventHub.dispatchEvent(ticketPuchasedEvent)
     }
@@ -31,12 +36,11 @@ eventHub.addEventListener("click", clickEvent => {
 
 
 export const TicketBooth = () => {
-    contentTarget.innerHTML = `
-        <div class="ticketBooth">
-            <button id="rideTicket">Ride Ticket</button>
-        </div>
-        <div class="ticketBooth">
-            <button id="foodTicket">Food Ticket</button>
+    contentTarget.innerHTML += `
+        <div class="ticketBooth attraction">
+            <button id="rideTicket" >Ride Ticket</button>
+            <button id="foodTicket" >Food Ticket</button>
+            <button id="gameTicket" >Game Ticket</button>
         </div>
     `
 }
