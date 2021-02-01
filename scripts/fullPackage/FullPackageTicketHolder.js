@@ -1,16 +1,20 @@
 import { TicketBooth } from "../TicketBooth.js"
+import { increaseCounter, decreaseCounter } from "../ticketCounter/TicketCounter.js"
 
 const eventHub = document.querySelector("#state-fair")
 
 export const FullPackageTicketHolder = () => {
  eventHub.addEventListener("fullPackageTicketPurchased", customEvent => {
   if(customEvent.detail.ticketType === "package") {
+   increaseCounter()
+   
    const ticketBoothBtns = document.querySelectorAll(".ticketBooth button")
    
-   // So each attraction adds one more.
+   // So each attraction adds one more ticket
    ticketBoothBtns.forEach(( btn ) => {
     if(btn.id !== "fullPackageTicket") {
-     btn.click();
+     btn.click()
+     decreaseCounter()
     }
    }) // end ticketBoothBtns
 
