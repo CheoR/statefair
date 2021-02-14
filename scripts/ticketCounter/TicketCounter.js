@@ -9,12 +9,7 @@ export const TicketCounter = () => {
  `
 }
 
-export const increaseCounter = () => {
+eventHub.addEventListener("click", clickEvent => {
  _counter++
  TicketCounter()
-}
-
-export const decreaseCounter = () => {
- _counter -= 1
- TicketCounter()
-}
+}) // eventHub - click
