@@ -1,3 +1,5 @@
+import { increaseCounter, decreaseCounter } from "../ticketCounter/TicketCounter.js"
+
 const eventHub = document.querySelector("#state-fair")
 
 export const FullPackageTicketHolder = () => {
